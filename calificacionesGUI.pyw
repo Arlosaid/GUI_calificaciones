@@ -39,34 +39,73 @@ class Interface(tk.Frame):
         root.withdraw()
         menu_principal = tk.Toplevel(self.miFrame)
         menu_principal.title("Menu Principal")
-        menu_principal.geometry("500x350+700+300")
+        menu_principal.geometry("325x350+700+300")
         menu_principal.iconbitmap("C:\\Users\\adroa\\Desktop\\programa_calificaciones\\img\\calif.ico")
         menu_principal.config(bg="#002E2C")
         menu_principal.resizable(False,False)
         
-        self.registro = ttk.Button(menu_principal,text="Registro alumnos",width=30,cursor ="hand2",
-        command=self.registrar).place(x=150, y=50)
+        self.registro = ttk.Button(menu_principal,text="Registro alumnos",width=20,cursor ="hand2",
+        command=self.interfaz_registrar).place(x=100, y=50)
        
-        self.listar = ttk.Button(menu_principal,text="Registro alumnos",width=30,cursor ="hand2",
-        command=self.registrar).place(x=150, y=100)
+        self.listar = ttk.Button(menu_principal,text="Listar alumnos",width=20,cursor ="hand2",
+        command=self.interfaz_registrar).place(x=100, y=100)
         
-        self.asignar_materias = ttk.Button(menu_principal,text="Registro alumnos",width=30,cursor ="hand2",
-        command=self.registrar).place(x=150, y=150)
+        self.asignar_materias = ttk.Button(menu_principal,text="Asignar materias",width=20,cursor ="hand2",
+        command=self.interfaz_registrar).place(x=100, y=150)
         
-        self.asignar_calificaciones = ttk.Button(menu_principal,text="Registro alumnos",width=30,cursor ="hand2",
-        command=self.registrar).place(x=150, y=200)
+        self.asignar_calificaciones = ttk.Button(menu_principal,text="Asignar calificaciones",width=20,cursor ="hand2",
+        command=self.interfaz_registrar).place(x=100, y=200)
 
-        self.calif_final = ttk.Button(menu_principal,text="Registro alumnos",width=30,cursor ="hand2",
-        command=self.registrar).place(x=150, y=250)
+        self.calif_final = ttk.Button(menu_principal,text="Ver calificaciones finales",width=20,cursor ="hand2",
+        command=self.interfaz_registrar).place(x=100, y=250)
 
 #-------------------------------------Interface registro alumnos-------------------------------------            
-    def registrar(self):
+    def interfaz_registrar(self):
+        
         
         registro = tk.Toplevel(self.miFrame)
-        registro.title("Menu Principal")
-        registro.geometry("500x300+700+300")
+        registro.title("Registro de Alumnos")
+        registro.geometry("400x200+700+400")
         registro.iconbitmap("C:\\Users\\adroa\\Desktop\\programa_calificaciones\\img\\calif.ico")
         registro.config(bg="#002E2C")
+        
+        self.alumnoL = ttk.Label(registro,text="Nombre del alumno",style="BW.TLabel")
+        self.alumnoL.pack(pady=30)
+        self.alumnoE = ttk.Entry(registro,width=50)
+        self.alumnoE.pack()
+
+        self.boton_registrar = ttk.Button(registro,text="Registrar",width=20,cursor ="hand2",
+        command=self.registro_alumnos)
+        self.boton_registrar.pack(pady=30)
+    
+    def registro_alumnos(self):
+
+        list = []
+
+        list.append(self.alumnoE.get())
+        messagebox.showinfo("Alumno Registrado","El alumno fue registrado con exito")
+        self.alumnoE.delete(0,'end')
+
+        
+#-------------------------------------Interface listar alumnos-------------------------------------            
+    def interfaz_listar(self):
+        
+        
+        registro = tk.Toplevel(self.miFrame)
+        registro.title("Registro de Alumnos")
+        registro.geometry("400x200+700+400")
+        registro.iconbitmap("C:\\Users\\adroa\\Desktop\\programa_calificaciones\\img\\calif.ico")
+        registro.config(bg="#002E2C")
+        
+        self.alumnoL = ttk.Label(registro,text="Nombre del alumno",style="BW.TLabel")
+        self.alumnoL.pack(pady=30)
+        self.alumnoE = ttk.Entry(registro,width=50)
+        self.alumnoE.pack()
+
+        self.boton_registrar = ttk.Button(registro,text="Registrar",width=20,cursor ="hand2",
+        command=self.registro_alumnos)
+        self.boton_registrar.pack(pady=30)
+
 
  #-------------------------------------Inicio de sesion-------------------------------------                 
     def sesion_iniciada(self):
